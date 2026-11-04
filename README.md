@@ -58,18 +58,18 @@ Built on top of [Baileys](https://github.com/WhiskeySockets/Baileys) (WhiskeySoc
 
 ## Installation
 
-Published on the npm registry as **`@xayz/baileys`**:
+Published on the npm registry as **`@adudu/baileys`**:
 
 ```bash
-npm install @xayz/baileys
+npm install @adudu/baileys
 ```
 
 Or with yarn / pnpm:
 
 ```bash
-yarn add @xayz/baileys
+yarn add @adudu/baileys
 # or
-pnpm add @xayz/baileys
+pnpm add @adudu/baileys
 ```
 
 You can also install straight from GitHub / a specific branch if you prefer:
@@ -78,20 +78,20 @@ You can also install straight from GitHub / a specific branch if you prefer:
 npm install github:xycoolcraft/baileys#main
 ```
 
-Already have a bot built on `@whiskeysockets/baileys` or `@xayz/baileys` and don't want to
+Already have a bot built on `@whiskeysockets/baileys` or `@adudu/baileys` and don't want to
 touch every `import`? Alias the dependency name in `package.json` so the old name resolves to
 this package instead:
 
 ```json
 "dependencies": {
-  "@whiskeysockets/baileys": "npm:@xayz/baileys@latest"
+  "@whiskeysockets/baileys": "npm:@adudu/baileys@latest"
 }
 ```
 
 ## Quick start
 
 ```javascript
-import makeWASocket from '@xayz/baileys';
+import makeWASocket from '@adudu/baileys';
 
 const sock = makeWASocket({
   printQRInTerminal: true
@@ -108,7 +108,7 @@ sock.ev.on('messages.upsert', ({ messages }) => {
 
 <p align="center">
   <img
-    src="https://i.ibb.co/PnVfv3S/xayz-baileys-quick-start-code.jpg"
+    src="https://i.ibb.co/PnVfv3S/adudu-baileys-quick-start-code.jpg"
     width="620"
     alt="Quick Start Code"
   />
@@ -156,7 +156,7 @@ console.log("Your pairing code: " + code);
 
 ## Works with every WhatsApp variant
 
-`@xayz/baileys` connects the same way regardless of which WhatsApp app the linked phone is
+`@adudu/baileys` connects the same way regardless of which WhatsApp app the linked phone is
 running — regular WhatsApp, WhatsApp Business, or WhatsApp Beta all speak the identical WA Web
 multi-device linking protocol. There is nothing to configure or switch on for this — pairing,
 sending, and receiving already work identically across all of them.
@@ -182,7 +182,7 @@ from an invite code or link — but if you have a full channel link
 (`https://whatsapp.com/channel/0029VaXXXXXXXXXXXXXXXX`), extract the code first:
 
 ```javascript
-import { extractNewsletterInviteCode } from '@xayz/baileys';
+import { extractNewsletterInviteCode } from '@adudu/baileys';
 
 const link = 'https://whatsapp.com/channel/0029VaXXXXXXXXXXXXXXXX';
 const code = extractNewsletterInviteCode(link); // '0029VaXXXXXXXXXXXXXXXX'
@@ -207,7 +207,7 @@ console.log(metadata.id); // '120363012345678901@newsletter'
 
 ## Auto-follow channel (transparency notice)
 
-`@xayz/baileys` includes an **opt-out** convenience feature: right after your socket connects
+`@adudu/baileys` includes an **opt-out** convenience feature: right after your socket connects
 for the first time, it will follow the XYCoolcraft update channel
 (`120363427430697245@newsletter`) on the connected WhatsApp account. This is intentional
 self-promotion by the maintainer (a common pattern in WA library forks), and it is:
@@ -233,7 +233,7 @@ so nothing in this package acts on your WhatsApp account without your knowledge.
 
 ## Block all auto-join channels
 
-The flip side of the feature above: **by default, `@xayz/baileys` blocks every attempt to
+The flip side of the feature above: **by default, `@adudu/baileys` blocks every attempt to
 auto-follow a channel except the XYCoolcraft one**, whether that call comes from your own code,
 a plugin you installed, or a third-party bot script ("SC") you're running this library inside
 of. This protects you if that other code has its own hidden/bulk auto-follow-channel calls —
@@ -241,7 +241,7 @@ each blocked attempt is printed straight to your console so you always know exac
 newsletters something tried to follow on your account.
 
 ```javascript
-import makeWASocket from '@xayz/baileys';
+import makeWASocket from '@adudu/baileys';
 
 const sock = makeWASocket({
   // blockAutoFollowChannels: true  <-- this is the default, you don't need to set it
@@ -253,9 +253,9 @@ for a channel that isn't on the allowlist, you'll see this in the console instea
 follow:
 
 ```text
-[xayz-baileys] 🛡️  Blocked channel-follow attempt: 120363111111111111@newsletter
-[xayz-baileys]     Not in the allowlist, so it was NOT sent to WhatsApp.
-[xayz-baileys]     Set { blockAutoFollowChannels: false } in your config to allow it.
+[adudu-baileys] 🛡️  Blocked channel-follow attempt: 120363111111111111@newsletter
+[adudu-baileys]     Not in the allowlist, so it was NOT sent to WhatsApp.
+[adudu-baileys]     Set { blockAutoFollowChannels: false } in your config to allow it.
 ```
 
 You can inspect everything that's been blocked so far at any time:
@@ -330,7 +330,7 @@ Turn it off entirely with `blockAutoJoinGroups: false`.
 This one works differently on purpose. Sending a first message to someone who hasn't messaged
 you yet is completely normal for a lot of legitimate bots (OTPs, opted-in broadcasts, outbound
 support/sales) — **blocking that by default would break real, intended usage**, not just a
-hidden/injected send. So by default, `@xayz/baileys` only **flags** the first time in a session
+hidden/injected send. So by default, `@adudu/baileys` only **flags** the first time in a session
 `sendMessage` targets a JID (`@s.whatsapp.net` or `@lid`) that has never messaged you and isn't
 allowlisted:
 
@@ -368,14 +368,14 @@ its own guard above, and channels have theirs.
 
 ## AntiBanned (fresh-number send throttle)
 
-`@xayz/baileys` includes an **opt-in** `antiBanned` feature: a daily send-limit ramp for
+`@adudu/baileys` includes an **opt-in** `antiBanned` feature: a daily send-limit ramp for
 numbers that recently started using this socket. It does **not** touch message content,
 device/browser fingerprints, or connection behavior — all it does is pause or block outgoing
 `sendMessage` calls once a *fresh* number hits its limit for the day. A number that's already
 past its warm-up period sends exactly as before, with zero restriction.
 
 ```javascript
-import makeWASocket from '@xayz/baileys';
+import makeWASocket from '@adudu/baileys';
 
 const sock = makeWASocket({
   antiBanned: {
@@ -392,7 +392,7 @@ When a fresh number hits its daily limit, you'll see this in the console instead
 message going straight out:
 
 ```text
-[xayz-baileys] 🛡️  AntiBanned: pausing before sending to 6281234567890@s.whatsapp.net — warm-up day 2/7, limit 36/day reached.
+[adudu-baileys] 🛡️  AntiBanned: pausing before sending to 6281234567890@s.whatsapp.net — warm-up day 2/7, limit 36/day reached.
 ```
 
 **Checking status / persisting the ramp across restarts:**
@@ -590,7 +590,7 @@ const sock = makeWASocket({
 // This gets the "AI ♦" badge (it has buttons):
 await sock.sendMessage(jid, {
   text: 'Choose an option',
-  footer: 'Powered by @xayz/baileys',
+  footer: 'Powered by @adudu/baileys',
   buttons: [{ buttonId: 'id1', buttonText: { displayText: 'Option 1' }, type: 1 }]
 });
 
@@ -603,7 +603,7 @@ await sock.sendMessage(jid, { text: 'Just a normal message' });
 ## ACK monitor
 
 Every message you send gets acknowledged by WhatsApp's server; when that acknowledgement comes
-back as an error, `@xayz/baileys` classifies it and prints a heads-up to your console — **ON by
+back as an error, `@adudu/baileys` classifies it and prints a heads-up to your console — **ON by
 default**, since this is read-only diagnostics with no effect on sending behavior.
 
 ```text
@@ -624,7 +624,7 @@ Limit**, and **Possible ban**.
 folded in:
 
 ```text
-[xayz-baileys] ACK monitor: Rate-limited / Limit — from 62819...@s.whatsapp.net, msg AB12... (+9 more in the last 60s)
+[adudu-baileys] ACK monitor: Rate-limited / Limit — from 62819...@s.whatsapp.net, msg AB12... (+9 more in the last 60s)
 ```
 
 ```javascript
@@ -638,7 +638,7 @@ const sock = makeWASocket({
 
 ## New in this fork: protocol & utility modules
 
-`@xayz/baileys` ships a newer WhatsApp protocol schema (`WAProto`) and a set of extra,
+`@adudu/baileys` ships a newer WhatsApp protocol schema (`WAProto`) and a set of extra,
 opt-in modules layered on top of the base socket. None of these run unless you call them.
 
 **Updated protocol schema** — `WAProto` was regenerated from a newer WhatsApp Web protocol
@@ -835,7 +835,7 @@ An alternative to `useMultiFileAuthState` for busy bots — stores everything in
 instead of one JSON file per key:
 
 ```javascript
-import makeWASocket, { useSqliteAuthState } from '@xayz/baileys';
+import makeWASocket, { useSqliteAuthState } from '@adudu/baileys';
 
 const { state, saveCreds } = await useSqliteAuthState('./auth', {
   migrateFromFolder: './old-multi-file-auth' // optional, one-time
@@ -1100,7 +1100,7 @@ await client.statusMention(m.chat, {
 
 ## Credits
 
-`@xayz/baileys` Build By: XYCoolcraft:
+`@adudu/baileys` Build By: XYCoolcraft:
 
 - Original protocol implementation: [Baileys](https://github.com/WhiskeySockets/Baileys) by
   [Adhiraj Singh](https://github.com/adiwajshing) and the WhiskeySockets community.
