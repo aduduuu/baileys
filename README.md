@@ -132,7 +132,7 @@ const client = makeWASocket({
 ## Connect With Pairing Code
 
 ```javascript
-import makeWASocket, { fetchLatestWAWebVersion, Browsers } from '@xayz/baileys';
+import makeWASocket, { fetchLatestWAWebVersion, Browsers } from '@adudu/baileys';
 
 const client = makeWASocket({
   browser: Browsers.xycoolcraft('Chrome'),
