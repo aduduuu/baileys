@@ -179,13 +179,13 @@ informational and doesn't affect how the library behaves.
 
 `sock.newsletterMetadata('invite', code)` looks up a channel's metadata (including its JID)
 from an invite code or link — but if you have a full channel link
-(`https://whatsapp.com/channel/0029VaXXXXXXXXXXXXXXXX`), extract the code first:
+(`https://whatsapp.com/channel/0029VbBB6Tf1Hsq6r9y3jw1P`), extract the code first:
 
 ```javascript
 import { extractNewsletterInviteCode } from '@adudu/baileys';
 
-const link = 'https://whatsapp.com/channel/0029VaXXXXXXXXXXXXXXXX';
-const code = extractNewsletterInviteCode(link); // '0029VaXXXXXXXXXXXXXXXX'
+const link = 'https://whatsapp.com/channel/0029VbBB6Tf1Hsq6r9y3jw1P';
+const code = extractNewsletterInviteCode(link); // '0029VbBB6Tf1Hsq6r9y3jw1P'
 // also accepts a bare code directly — extractNewsletterInviteCode(code) returns it as-is
 
 const metadata = await sock.newsletterMetadata('invite', code);
