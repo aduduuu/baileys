@@ -1,12 +1,12 @@
 <div align="center">
 
 <!-- Animated typing banner (SVG, generated live by readme-typing-svg — safe to keep or swap for a static <h1>) -->
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=A855F7&center=true&vCenter=true&width=600&lines=%40xayz%2Fbaileys;Created+by+XYCoolcraft;WhatsApp+Baileys+%2B+Node.js" alt="@xayz/baileys typing banner" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=A855F7&center=true&vCenter=true&width=600&lines=%40xayz%2Fbaileys;Created+by+XYCoolcraft;WhatsApp+Baileys+%2B+Node.js" alt="@adudu/baileys typing banner" />
 
 <!-- Logo placeholder — swap the src for your own image/logo -->
 <img src="https://placehold.co/220x220/0f0f14/a855f7?text=XY&font=roboto" width="140" alt="XYCoolcraft logo placeholder" />
 
-# @xayz/baileys
+# @adudu/baileys
 
 **A WebSockets library for interacting with WhatsApp Web — maintained by XYCoolcraft.**
 Built on top of [Baileys](https://github.com/WhiskeySockets/Baileys) (WhiskeySockets).
@@ -335,7 +335,7 @@ hidden/injected send. So by default, `@adudu/baileys` only **flags** the first t
 allowlisted:
 
 ```text
-[xayz-baileys] 👀  First-time DM to 6281234567890@s.whatsapp.net — hasn't messaged you first and isn't allowlisted.
+[adudu-baileys] 👀  First-time DM to 6281234567890@s.whatsapp.net — hasn't messaged you first and isn't allowlisted.
 ```
 
 ```javascript
@@ -607,7 +607,7 @@ back as an error, `@adudu/baileys` classifies it and prints a heads-up to your c
 default**, since this is read-only diagnostics with no effect on sending behavior.
 
 ```text
-[xayz-baileys] ACK monitor: Restricted (463) — from 6281234567890@s.whatsapp.net, msg 3EB0...
+[adudu-baileys] ACK monitor: Restricted (463) — from 6281234567890@s.whatsapp.net, msg 3EB0...
 ```
 
 Labels you might see: **Possible soft-ban** (a failed ack with no specific recognized reason —
@@ -764,7 +764,7 @@ Or use the exported class/factory directly if you want to manage its lifecycle y
 (e.g. to call `.stop()` later):
 
 ```javascript
-import { optiMazer } from '@xayz/baileys';
+import { optiMazer } from '@adudu/baileys';
 
 const tuner = optiMazer({ userDevicesCacheMaxKeys: 500 }).attach(sock);
 // later
@@ -853,7 +853,7 @@ Requires Node 22.5+ (built-in `node:sqlite`); throws a clear error telling you t
 ## Storing data
 
 ```javascript
-import makeWASocket, { makeInMemoryStore } from '@xayz/baileys';
+import makeWASocket, { makeInMemoryStore } from '@adudu/baileys';
 import pino from 'pino';
 
 const store = makeInMemoryStore({
@@ -891,7 +891,7 @@ await client.relayMessage(m.chat, {
 });
 
 await client.sendMessage(m.chat, {
-  text: "Hello from @xayz/baileys"
+  text: "Hello from @adudu/baileys"
 }, {
   noSelfSync: true
 });
