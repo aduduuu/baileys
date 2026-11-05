@@ -11,7 +11,7 @@
 **A WebSockets library for interacting with WhatsApp Web — maintained by XYCoolcraft.**
 Built on top of [Baileys](https://github.com/WhiskeySockets/Baileys) (WhiskeySockets).
 
-[![npm version](https://img.shields.io/npm/v/%40xayz%2Fbaileys?color=a855f7&label=npm)](https://www.npmjs.com/package/@xayz/baileys)
+[![npm version](https://img.shields.io/npm/v/%40xayz%2Fbaileys?color=a855f7&label=npm)](https://www.npmjs.com/package/@adudu/baileys)
 [![npm downloads](https://img.shields.io/npm/dt/%40xayz%2Fbaileys?color=blue)](https://www.npmjs.com/package/@xayz/baileys)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](package.json)
@@ -121,7 +121,7 @@ sock.ev.on('messages.upsert', ({ messages }) => {
 ## With QR Code
 
 ```javascript
-import makeWASocket, { Browsers } from '@xayz/baileys';
+import makeWASocket, { Browsers } from '@adudu/baileys';
 
 const client = makeWASocket({
   browser: Browsers.xycoolcraft('Chrome'),
